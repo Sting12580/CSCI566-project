@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# checkpoints
+checkpoints/
+*.pt
+*.pth
+*.ckpt
+
+# dataset
+data/
+
+# logs
+logs/
+
+# IDE
+.vscode/
+.idea/
