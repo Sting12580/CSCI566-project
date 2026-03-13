@@ -39,3 +39,4 @@ wandb/
 # IDE
 .vscode/
 .idea/
+slurm_*.out
