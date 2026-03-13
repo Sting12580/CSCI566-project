@@ -1,6 +1,6 @@
 torch>=2.0
 torchvision>=0.15
-torchgeo>=0.5
+torchgeo>=0.4.1
 scipy
 numpy
 pillow

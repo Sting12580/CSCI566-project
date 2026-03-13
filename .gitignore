@@ -1,9 +1,18 @@
 # macOS
 .DS_Store
+Thumbs.db
 
 # Python
 __pycache__/
 *.pyc
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# virtual env
+.venv/
+venv/
+env/
 
 # checkpoints
 checkpoints/
@@ -12,10 +21,20 @@ checkpoints/
 *.ckpt
 
 # dataset
-data/
+data/*
+!data/__init__.py
+!data/loveda_dataset.py
+data/loveda/
 
 # logs
 logs/
+training_log*.csv
+*.log
+runs/
+wandb/
+
+# local tool config
+.claude/
 
 # IDE
 .vscode/

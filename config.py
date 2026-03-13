@@ -1,9 +1,20 @@
 NUM_CLASSES = 7
+CLASS_NAMES = [
+    "Background",
+    "Building",
+    "Road",
+    "Water",
+    "Barren",
+    "Forest",
+    "Agriculture",
+]
+BACKBONE = "resnet101"
 NUM_QUERIES = 100
 HIDDEN_DIM = 256
 NUM_DECODER_LAYERS = 6
 IMAGE_SIZE = 512
 BATCH_SIZE = 4
+NUM_WORKERS = 4
 EPOCHS = 50
 LR_BACKBONE = 1e-4
 LR_DECODER = 1e-3

@@ -1,29 +1,37 @@
 """
-Full Mask2Former model: Backbone → FPN Pixel Decoder → Transformer Decoder.
+Full Mask2Former model: Backbone -> FPN Pixel Decoder -> Transformer Decoder.
 """
 
 import torch
 import torch.nn as nn
 
 import config
-from .backbone import ResNet18Backbone
+from .backbone import ResNetBackbone
 from .fpn import FPNPixelDecoder
 from .transformer_decoder import MaskedTransformerDecoder
 
 
 class Mask2Former(nn.Module):
-    def __init__(self, num_classes: int = config.NUM_CLASSES,
-                 num_queries: int = config.NUM_QUERIES,
-                 hidden_dim: int = config.HIDDEN_DIM,
-                 num_decoder_layers: int = config.NUM_DECODER_LAYERS,
-                 pretrained_backbone: bool = True):
+    def __init__(
+        self,
+        num_classes: int = config.NUM_CLASSES,
+        num_queries: int = config.NUM_QUERIES,
+        hidden_dim: int = config.HIDDEN_DIM,
+        num_decoder_layers: int = config.NUM_DECODER_LAYERS,
+        backbone_name: str = config.BACKBONE,
+        pretrained_backbone: bool = True,
+    ):
         super().__init__()
         self.num_classes = num_classes
         self.num_queries = num_queries
+        self.backbone_name = backbone_name
 
-        self.backbone = ResNet18Backbone(pretrained=pretrained_backbone)
+        self.backbone = ResNetBackbone(
+            name=backbone_name,
+            pretrained=pretrained_backbone,
+        )
         self.pixel_decoder = FPNPixelDecoder(
-            in_channels=ResNet18Backbone.out_channels,
+            in_channels=self.backbone.out_channels,
             hidden_dim=hidden_dim,
         )
         self.transformer_decoder = MaskedTransformerDecoder(
